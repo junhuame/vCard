@@ -488,14 +488,15 @@
             <div class="form col500 fl-left">
                 <h3>在线留言</h3>
 
-                <form action="#" method="get" id="contact_form">
+                <form action="/post-message/" method="post" id="contact_form">
+                    {% csrf_token %}
                     <div class="clearfix">
                         <div class="form-col form-marg small fl-left">
                             <label>姓名
                                 <span>*</span>
                             </label>
                             <div class="field">
-                                <input class="form-item req" id="contact_name" name="contact_name" type="text">
+                                <input class="form-item req" id="name" name="name" type="text">
                             </div>
                         </div>
                         <div class="form-col small fl-left">
@@ -511,7 +512,7 @@
                         <label>消息
                             <span>*</span>
                         </label>
-                        <textarea id="comment" name="comment" class="form-item req"></textarea>
+                        <textarea id="message" name="message" class="form-item req"></textarea>
                     </div>
                     <div class="form-btn">
                         <div class="field">
