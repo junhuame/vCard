@@ -5,7 +5,7 @@
 {% block content %}
 
 <section id="profile" class="item">
-    <h2 class="item-title"><a href="{%url 'home'%}"><span class="title">个资料</span><span class="icon-user"></span></a></h2>
+    <h2 class="item-title"><a href="{%url 'home'%}"><span class="title">个人资料</span><span class="icon-user"></span></a></h2>
     <div class="item-border"><span></span></div>
 </section><!-- /#profile -->
 
@@ -18,7 +18,7 @@
             {% for post in posts %}
                 <article class="entry-box">
                     <header class="entry-header">
-                        <h2 class="post-title"><a href="#">{{ post.title }}</a></h2>
+                        <h2 class="post-title"><a href="{% url 'blog:blog_datail' post.publish|date:'Y' post.publish|date:'m' post.publish|date:'d' post.slug %}">{{ post.title }}</a></h2>
                         <div class="post-info">
                             由 <a href="{% url 'home' %}" title="Posts by admin" rel="author">{{post.author.username}}</a> 发布于
                             <a href="#" title="View all posts in Creative" rel="category tag">{{ post.Category.name }}</a>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <footer><a class="entry-more btn" href="#">Read More</a></footer>
+                    <footer><a class="entry-more btn" href="{% url 'blog:blog_datail' post.publish|date:'Y' post.publish|date:'m' post.publish|date:'d' post.slug %}">阅读全文</a></footer>
                 </article>
     
             {% endfor %}
