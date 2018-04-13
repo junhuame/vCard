@@ -125,3 +125,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 # 自定义媒体目录
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

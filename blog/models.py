@@ -13,6 +13,15 @@ class Category(models.Model):
         return self.name
 
 
+class PostPulishedManager(models.Model):
+    """
+    博客日志管理器
+    过滤状态为 published 日志
+    """
+    def get_queryset(self):
+        return super(PostPulishedManager, self).get_queryset().filter(status='published')
+
+
 class Post(models.Model):
     """日志文章"""
     STATUS_CHOICES=(
@@ -32,11 +41,14 @@ class Post(models.Model):
     updated = models.DateTimeField('更新时间', auto_now_add=True)
     status = models.CharField('发布状态', max_length=50, choices=STATUS_CHOICES, default='draft')
     
+    published_objects = PostPulishedManager()
+
     def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['-publish']
+
 
 class Comment(models.Model):
     """日志评论"""
