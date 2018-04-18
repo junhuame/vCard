@@ -1,5 +1,6 @@
 from django import template
 from blog.models import Post, Category
+from taggit.models import Tag
 
 
 register = template.Library()
@@ -16,5 +17,10 @@ def show_latest_posts(count=5):
 def get_all_categories():
     """获取日志分类"""
     return Category.objects.all()
+
+@register.assignment_tag
+def get_all_tags():
+    """获取日志标签"""
+    return Tag.objects.all()
 
 

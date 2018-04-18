@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+from taggit.managers import TaggableManager
 
 
 class Category(models.Model):
@@ -42,7 +43,8 @@ class Post(models.Model):
     updated = models.DateTimeField('更新时间', auto_now_add=True)
     status = models.CharField('发布状态', max_length=50, choices=STATUS_CHOICES, default='draft')
     
-    objects = models.Manager()
+    tags = TaggableManager()
+
     published_objects = PostPublishedManager()
 
     def __str__(self):

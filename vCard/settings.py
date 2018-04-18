@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'guestbook',
     'blog',
     'tinymce',
+    'taggit',
 ]
 
 MIDDLEWARE = [
