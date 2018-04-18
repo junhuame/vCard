@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -13,13 +14,13 @@ class Category(models.Model):
         return self.name
 
 
-class PostPulishedManager(models.Model):
+class PostPublishedManager(models.Manager):
     """
     博客日志管理器
     过滤状态为 published 日志
     """
     def get_queryset(self):
-        return super(PostPulishedManager, self).get_queryset().filter(status='published')
+        return super(PostPublishedManager, self).get_queryset().filter(status='published')
 
 
 class Post(models.Model):
@@ -35,13 +36,14 @@ class Post(models.Model):
     Category = models.ForeignKey(Category, related_name='blog_posts')
     author = models.ForeignKey(User, related_name='blog_posts')
     image = models.ImageField('图片', null=True, blank=True, upload_to="uploads/")
-    body = models.TextField('正文')
+    body = HTMLField('正文')
     publish = models.DateTimeField('发布时间', default=timezone.now)
     created = models.DateTimeField('创建时间', auto_now_add=True)
     updated = models.DateTimeField('更新时间', auto_now_add=True)
     status = models.CharField('发布状态', max_length=50, choices=STATUS_CHOICES, default='draft')
     
-    published_objects = PostPulishedManager()
+    objects = models.Manager()
+    published_objects = PostPublishedManager()
 
     def __str__(self):
         return self.title

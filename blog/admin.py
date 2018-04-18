@@ -16,6 +16,11 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('Category', 'status', 'publish')
     list_per_page = 20
 
+    class Media():
+        js = (
+            'https://cloud.tinymce.com/stable/tinymce.min.js',
+            '/static/js/tinymce/custom.js'
+        )
 
 class CommentAdmin(admin.ModelAdmin):
     """日志评论管理"""

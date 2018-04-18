@@ -37,7 +37,7 @@
                                 <a href="#" class="comments-link"><i class="comments-icon"></i>{{post.comments.count}}</a>               
                             </div>
                             <div class="entry-text">
-                                <div><p>{{post.body|truncatewords:10}}</p>
+                                <div><p>{{post.body|striptags|truncatewords:10}}</p>
                                 </div>
                             </div>
                         </div>
@@ -47,12 +47,7 @@
     
             {% endfor %}
             
-            <div id="pageination" class="clearfix">
-                <ul class="page-numbers">
-                    <li><span class="page-numbers current">1</span></li>
-                    <li><a class="page-numbers" href="#">2</a></li>
-                </ul>
-            </div>
+            {% include "pagination.html" %} 
         </div>
 
         <div class="col230 fl-right">

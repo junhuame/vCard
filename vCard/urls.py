@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^$', view=views.home, name='home'),
     url(r'^post-message/$', view=gb_views.post_message, name='post_message'),
     url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
+    url(r'^tinymce/', include('tinymce.urls',namespace='tinymce', app_name='tinymce')),
 ]
 
 urlpatterns +=static.static(

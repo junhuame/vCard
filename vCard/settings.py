@@ -25,7 +25,7 @@ SECRET_KEY = 'tk3pj)nnlg#nx96pcsdedl3_ik*jjz9u5wwgy@f6x71vl^40o9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] 
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'guestbook',
     'blog',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
